@@ -45,7 +45,7 @@ public class UserTeam implements Serializable {
     private Date updateTime;
 
     /**
-     * 是否删除
+     * 是否可删除
      */
     @TableLogic
     private Integer isDelete;
