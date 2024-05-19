@@ -1,15 +1,12 @@
 # 应用服务配置
-
 server:
   port: 8080
   servlet:
     context-path: /api
-aliyun:
-  oss:
-    endpoint: https://oss-cn-hangzhou.aliyuncs.com
-    accessKeyId: LTAI5t9et6xVnwzoeDJDZwzJ
-    accessKeySecret: WG2mxE2SEScK80oLrFgwKP56h3rytb
-    bucketName: wbe-tilas
+    session:
+      cookie:
+        domain: localhost
+#这里只规定了localhost域名下可携带cookie--127.0.0.1这个域名都不行，所以前端访问时请访问localhost域名
 # MyBatis 配置
 mybatis:
   mapper-locations: classpath:mappers/*.xml
@@ -18,31 +15,47 @@ mybatis:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
-# MBatis-Pus框架它有一个逻辑删除，默认会帮助我们查询出来没有被删的用户
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # SQL 的日志打印
+  # MyBatis-Plus框架它有一个逻辑删除，默认会帮助我们查询出来没有被删的用户
   global-config:
     db-config:
       Logic-delete-field: isDelete
-    #全局逻辑删除的实体字段名(since3.3.g,配置后可以忽略不配置步骤2)
+      #全局逻辑删除的实体字段名(since3.3.g,配置后可以忽略不配置步骤2)
       Logic-delete-value: 1 #逻辑已删除值（默认为1）
       Logic-not-delete-value: 0 #逻辑未删除值（默认为0)
 #项目名
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   application:
-    name: user-center
+    name: yupao-backend
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 100MB
-      # DataSource Config
-# 新版本为com.mysql.cj.jdbc.Driver
+  profiles:
+    active: dev
+  # DataSource Config
+  # 新版本为com.mysql.cj.jdbc.Driver
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/yupi
+    url: jdbc:mysql://localhost:3306/yupao?serverTimezone=Asia/Shanghai
     username: root
     password: abcde
-# session失效时间
+  # session失效时间
   session:
-      timeout: 86400
+    timeout: 86400
+    store-type: redis #表示从 redis 读写 session
+  #3. 修改 spring-session 存储配置 spring.session.store-type
+  #默认是 none，表示存储在单台服务器
+  #store-type: redis，表示从 redis 读写 session
+  redis:
+    port: 6379
+    host: localhost
+    database: 0
+
 
 
 

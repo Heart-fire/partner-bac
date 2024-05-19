@@ -1,9 +1,9 @@
 {
   "groups": [
     {
-      "name": "aliyun.oss",
-      "type": "com.yupi.common.ConstantPropertiesUtil",
-      "sourceType": "com.yupi.common.ConstantPropertiesUtil"
+      "name": "spring.redis",
+      "type": "com.yupi.config.RedissonConfig",
+      "sourceType": "com.yupi.config.RedissonConfig"
     }
   ],
   "properties": [
@@ -26,6 +26,16 @@
       "name": "aliyun.oss.endpoint",
       "type": "java.lang.String",
       "description": "Description for aliyun.oss.endpoint."
+    },
+    {
+      "name": "spring.redis.host",
+      "type": "java.lang.String",
+      "sourceType": "com.yupi.config.RedissonConfig"
+    },
+    {
+      "name": "spring.redis.port",
+      "type": "java.lang.String",
+      "sourceType": "com.yupi.config.RedissonConfig"
     }
   ],
   "hints": []

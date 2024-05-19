@@ -1,8 +1,8 @@
 package com.yupi.service;
 
-import java.util.Date;
+import java.util.Arrays;
+import java.util.List;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yupi.model.domain.User;
 import com.yupi.model.request.UserSearchRequest;
 import org.apache.ibatis.annotations.Mapper;
@@ -101,4 +101,10 @@ public class UserServiceTest {
         Assertions.assertTrue(result > 0);
     }
 
+    @Test
+    void testSearchUsersByTags() {
+        List<String> tagNameList = Arrays.asList("java", "python");
+        List<User> userList = userService.searchUsersByTags(tagNameList);
+        Assertions.assertNotNull(userList);
     }
+}

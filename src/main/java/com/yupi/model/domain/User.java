@@ -38,6 +38,10 @@ public class User implements Serializable {
      * 性别
      */
     private Integer gender;
+    /**
+     * 个人信息
+     */
+    private String profile;
 
     /**
      * 密码
@@ -82,6 +86,8 @@ public class User implements Serializable {
      * 学号
      */
     private String planetCode;
+
+    private String tags;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -4,9 +4,9 @@ spring:
   # 新版本为com.mysql.cj.jdbc.Driver
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://81.70.85.79:3306/user_center
+    url: jdbc:mysql://*******/a
     username: xinhuo
-    password: xinhuo10037475
+    password: x#####
   # session失效时间
   session:
     timeout: 86400
