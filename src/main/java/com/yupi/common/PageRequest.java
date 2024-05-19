@@ -2,22 +2,24 @@ package com.yupi.common;
 
 import lombok.Data;
 
-@Data
-public class PageRequest {
+import java.io.Serializable;
 
-    /**
-     * 当前页号
-     */
-    private long current = 1;
+@Data
+public class PageRequest implements Serializable {
+
+
+    private static  final  long serialVersionUID = 4937135769026142493L;
+
+
 
     /**
      * 页面大小
      */
-    private long pageSize = 5;
+    private long pageSize = 10;
 
     /**
-     * 排序字段
+     * 当前第几页
      */
-    private String sortField;
+    private int pageNum = 1;
 
 }

@@ -12,7 +12,7 @@
             <result property="gender" column="gender" jdbcType="TINYINT"/>
             <result property="userPassword" column="userPassword" jdbcType="VARCHAR"/>
             <result property="email" column="email" jdbcType="VARCHAR"/>
-            <result property="userstatus" column="userstatus" jdbcType="INTEGER"/>
+            <result property="userStatus" column="userstatus" jdbcType="INTEGER"/>
             <result property="phone" column="phone" jdbcType="VARCHAR"/>
             <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>

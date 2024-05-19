@@ -6,9 +6,9 @@ package com.yupi.common;
 public class ResultUtil {
     /**
      * 成功
-     * @param data
-     * @param <T>
-     * @return
+     * @param data 数据
+     * @param <T>  泛型
+     * @return 返回
      */
     public static <T> BaseResponse<T> success(T data){
         return new BaseResponse<>(0,data,"ok");

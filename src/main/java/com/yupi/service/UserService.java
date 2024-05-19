@@ -5,8 +5,8 @@ import com.yupi.model.domain.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.yupi.model.request.UserSearchRequest;
 import com.yupi.model.request.UserUpdatePasswordRequest;
-
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
 * @author XinHuo
@@ -15,22 +15,20 @@ import javax.servlet.http.HttpServletRequest;
 */
 public interface UserService extends IService<User> {
 
-
     /**
-     * ===========================================用户注册
+     * 用户注册
      *@param userAccount 用户账户
      *@param userPassword 用户密码
      *@param checkPassword 校验密码
-     * @parade planetCode 学号
+     *@parade planetCode 学号
      *@return 新用户id
      */
      long userRegister(String username,String userAccount,String userPassword,String checkPassword,String planetCode);
 
     /**
-     * ============================================用户登录
+     * 用户登录
      * @param userAccount 用户账户
      * @param userPassword 用户密码
-     * @param request
      * @return 脱敏后的用户信息
      */
      User userLogin(String userAccount, String userPassword, HttpServletRequest request);
@@ -50,12 +48,6 @@ public interface UserService extends IService<User> {
     int userLogout(HttpServletRequest request);
 
     /**
-     * 获取当前用户
-     * @param request
-     * @return
-     */
-    User getLoginUser(HttpServletRequest request);
-    /**
      * 修改密码
      *
      * @param updatePasswordRequest
@@ -67,5 +59,40 @@ public interface UserService extends IService<User> {
      * @param searchRequest
      * @return
      */
-    QueryWrapper<User> getQueryWrapper(UserSearchRequest searchRequest);
+     QueryWrapper<User> getQueryWrapper(UserSearchRequest searchRequest);
+
+    /**
+     * 通过标签查询用户
+     * @param tagNameList
+     * @return
+     */
+    List<User> searchUsersByTags(List<String> tagNameList);
+    /*-------------------------------------------------------------------------------*/
+    /**
+     * 用户信息修改
+     * @param user
+     * @param loginUser
+     * @return
+     */
+    int updateUser(User user, User loginUser);
+    /**
+     * 获取当前用户信息
+     * @param request
+     * @return
+     */
+    User getLoginUser(HttpServletRequest request);
+    /**
+     * 是否为管理员
+     * @param request
+     * @return
+     */
+    boolean isAdmin(HttpServletRequest request);
+    /**
+     * 是否为管理员
+     * @param loginUser
+     * @return
+     */
+    boolean isAdmin(User loginUser);
+
+    List<User> matchUsers(long num, User loginUser);
 }
