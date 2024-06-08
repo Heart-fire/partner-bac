@@ -15,10 +15,10 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "spring.redis")
 @Data
 public class RedissonConfig {
-
     private String host;
-
     private String port;
+    //线上Redis密码
+    private String password;
 
     @Bean
     public RedissonClient redissonClient() {
@@ -26,7 +26,7 @@ public class RedissonConfig {
         Config config = new Config();
         String redisAddress = String.format("redis://%s:%s", host, port);
         //  使用单个Redis，没有开集群 useClusterServers()  设置地址和使用库
-        config.useSingleServer().setAddress(redisAddress).setDatabase(3);
+        config.useSingleServer().setAddress(redisAddress).setDatabase(3).setPassword(password);
         // 2. 创建实例
         RedissonClient redisson = Redisson.create(config);
         return redisson;

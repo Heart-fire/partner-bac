@@ -32,7 +32,8 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequestMapping("/team")
 @RestController                                         //咱们这个类里面所有的请求的接口返回值，响应的数据类型都是application json
-@CrossOrigin(origins = {"http://localhost:3000"})       //前端项目的端口
+@CrossOrigin(origins = {"http://127.0.0.1:5173"})
+//前端项目的端口
 public class TeamController {
     @Resource
     private UserService userService;

@@ -19,7 +19,7 @@ import java.util.Map;
  * @author: xinhuo
  * @date: 2024/5/10
  * @ClassName: yupao-backend
- * @Description:    用户插入单元测试，注意打包时要删掉或忽略，不然打一次包就插入一次
+ * @Description:  用户插入单元测试，注意打包时要删掉或忽略，不然打一次包就插入一次
  */
 @SpringBootTest
 class InsertUserTest {

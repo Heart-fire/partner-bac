@@ -40,19 +40,21 @@ public class PreCacheJob {
     // 每天执行，预热推荐用户
     @Scheduled(cron = "0 12 1 * * *")   //自己设置时间测试
     public void doCacheRecommendUser() {
+        //获取锁，指定锁名称
         RLock lock = redissonClient.getLock("xinhuo:precachejob:docache:lock");
 
         try {
-            // 只有一个线程能获取到锁
+            // 只有一个线程能获取到锁---判断是否获取锁
             if (lock.tryLock(0, -1, TimeUnit.MILLISECONDS)) {
                 System.out.println("getLock: " + Thread.currentThread().getId());
                 for (Long userId : mainUserList) {
                     //查数据库
                     QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+                    //分页展示用户
                     Page<User> userPage = userService.page(new Page<>(1, 20), queryWrapper);
                     String redisKey = String.format("xinhuo:user:recommend:%s", mainUserList);
                     ValueOperations valueOperations = redisTemplate.opsForValue();
-                    //写缓存,30s过期
+                    //写缓存,30s过期------TimeUnit.MILLISECONDS：毫秒 30000毫秒
                     try {
                         valueOperations.set(redisKey, userPage, 30000, TimeUnit.MILLISECONDS);
                     } catch (Exception e) {

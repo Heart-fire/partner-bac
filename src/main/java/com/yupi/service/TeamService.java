@@ -9,7 +9,6 @@ import com.yupi.model.request.TeamQuitRequest;
 import com.yupi.model.request.TeamUpdateRequest;
 import com.yupi.model.vo.TeamUserVO;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**

@@ -4,15 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.yupi.model.domain.User;
-import com.yupi.model.request.UserSearchRequest;
-import org.apache.ibatis.annotations.Mapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 用户服务测试

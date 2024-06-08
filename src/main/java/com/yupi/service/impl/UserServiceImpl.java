@@ -14,13 +14,12 @@ import com.yupi.model.request.UserSearchRequest;
 import com.yupi.model.request.UserUpdatePasswordRequest;
 import com.yupi.service.UserService;
 import com.yupi.utils.AlgorithmUtils;
-import javafx.util.Pair;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.math3.util.Pair;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;

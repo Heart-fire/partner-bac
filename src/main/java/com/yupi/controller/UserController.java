@@ -29,13 +29,14 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequestMapping("/user")
 @RestController//咱们这个类里面所有的请求的接口返回值，响应的数据类型都是application json
-@CrossOrigin(origins = {"http://localhost:3000"})/*-----前端项目的端口----*/
+//@CrossOrigin(origins = {"http://127.0.0.1:5173"},allowCredentials = "true")
+/*-----前端项目的端口----*/
 public class UserController {
     @Resource//spring提供的注解
     private UserService userService;
     @Resource
     private RedisTemplate redisTemplate;
-    //------------------------------添加返回类型---------------用户注册---
+    //------------------------------添加返回类型---------------用户注册
     @PostMapping("/register")
     public BaseResponse<Long> userRegister(@RequestBody UserRegisterRequest userRegisterRequest) {
         if (userRegisterRequest == null) {
@@ -52,7 +53,7 @@ public class UserController {
         long result = userService.userRegister(userName,userAccount, userPassword, checkPassword,planetCode);
         return ResultUtil.success(result);
     }
-    //-------------------------------------------------------------用户登录--
+    //-------------------------------------------------------------用户登录----
     @PostMapping("/login")
     public BaseResponse<User> userLogin(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request) {
         if (userLoginRequest == null) {
@@ -60,13 +61,14 @@ public class UserController {
         }
         String userAccount = userLoginRequest.getUserAccount();
         String userPassword = userLoginRequest.getUserPassword();
+        // 判断账户或密码 都不能为空
         if (StringUtils.isAnyBlank(userAccount, userPassword)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
         User user = userService.userLogin(userAccount, userPassword, request);
         return ResultUtil.success(user);
     }
-    //-------------------------------------------------------------用户注销--
+    //-------------------------------------------------------------用户注销----
 
     /**
      * 用户注销
@@ -82,7 +84,6 @@ public class UserController {
         return ResultUtil.success(result);
     }
     //---------------------------------------------------------------------
-
     /**
      * 当前登录用户请求
      * @param request
@@ -94,7 +95,6 @@ public class UserController {
         User resultUser = userService.getLoginUser(request);
         return ResultUtil.success(resultUser);
     }
-
     /**
      * 创建用户
      *
@@ -242,13 +242,13 @@ public class UserController {
 
     /**
      * 获取最匹配的用户
-     *
      * @param num
      * @param request
      * @return
      */
     @GetMapping("/match")
     public BaseResponse<List<User>> matchUsers(long num, HttpServletRequest request) {
+        //num-为接受一个推荐的数量---限定页数
         if (num <= 0 || num > 20) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
