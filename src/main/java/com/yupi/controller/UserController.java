@@ -39,9 +39,11 @@ public class UserController {
     //------------------------------添加返回类型---------------用户注册
     @PostMapping("/register")
     public BaseResponse<Long> userRegister(@RequestBody UserRegisterRequest userRegisterRequest) {
+        // 判断注册请求是否为空
         if (userRegisterRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
+        // 判断注册请求 任意一个请求都不能为空
         String userName = userRegisterRequest.getUsername();
         String userAccount = userRegisterRequest.getUserAccount();
         String userPassword = userRegisterRequest.getUserPassword();
@@ -50,6 +52,7 @@ public class UserController {
         if (StringUtils.isAnyBlank(userName,userAccount, userPassword, checkPassword,planetCode)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
+        // 调用-逻辑层
         long result = userService.userRegister(userName,userAccount, userPassword, checkPassword,planetCode);
         return ResultUtil.success(result);
     }

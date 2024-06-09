@@ -8,8 +8,9 @@ import java.io.Serializable;
  */
 @Data
 public class UserRegisterRequest implements Serializable {
-//生成了序列化id
+    //生成了序列化id
     private static final long serialVersionUID = 4475332955107312306L;
+
     private String userAccount;
     private String userPassword;
     private String checkPassword;

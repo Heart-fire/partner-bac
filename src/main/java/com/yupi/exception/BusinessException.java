@@ -3,6 +3,7 @@ package com.yupi.exception;
 import com.yupi.common.ErrorCode;
 
 public class BusinessException extends RuntimeException {
+
     private final int code;
     private final String description;
 

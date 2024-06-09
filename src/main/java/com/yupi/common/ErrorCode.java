@@ -14,13 +14,9 @@ public enum ErrorCode {
 
 
     private final int code;
-    /**
-     * 状态码信息
-     */
+//     * 状态码信息
     private final String message;
-    /**
-     * 状态码描述(详情)
-     */
+//     * 状态码描述(详情)
     private final String descripton;
 
     ErrorCode(int code, String message, String descripton) {
