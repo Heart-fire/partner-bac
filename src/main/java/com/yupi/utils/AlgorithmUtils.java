@@ -12,7 +12,6 @@ public class AlgorithmUtils {
     /**
      * 编辑距离算法（用于计算最相似的两组标签）
      * 原理：https://blog.csdn.net/DBC_121/article/details/104198838
-     *
      * @param tagList1
      * @param tagList2
      * @return
@@ -24,7 +23,6 @@ public class AlgorithmUtils {
         if (n * m == 0) {
             return n + m;
         }
-
         int[][] d = new int[n + 1][m + 1];
         for (int i = 0; i < n + 1; i++) {
             d[i][0] = i;
@@ -61,7 +59,6 @@ public class AlgorithmUtils {
         if (n * m == 0) {
             return n + m;
         }
-
         int[][] d = new int[n + 1][m + 1];
         for (int i = 0; i < n + 1; i++) {
             d[i][0] = i;

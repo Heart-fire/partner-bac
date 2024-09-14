@@ -13,8 +13,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 /**
  * @author: 心火
- * @date: 2022/11/20
- * @ClassName: yupao-backend01
  * @Description: 自定义 Swagger 接口文档的配置
  */
 @Configuration
