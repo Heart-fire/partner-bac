@@ -1,6 +1,6 @@
 
 ## 学伴易寻系统
-### 前端源码地址：[慧解AI前端源码](https://github.com/Heart-fire/aitest-frontend)
+### 前端源码地址：[学伴易寻前端源码](https://github.com/Heart-fire/partner-fro)
 ## 项目简介 
 
 #### 🥇项目介绍：
